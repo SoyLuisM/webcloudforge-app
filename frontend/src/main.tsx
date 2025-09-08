@@ -5,6 +5,7 @@ import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <h1>hola</h1>
+    <h1>Hola estamos trabajando XD</h1>
+    <p>la pagina estará lista pronto :D</p>
   </StrictMode>,
 )
