@@ -1,12 +1,12 @@
 {
-  //shadcn configurations
-  "baseUrl": ".",
+  "compilerOptions": {
+    //shadcn configurations
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "./src/*"
       ]
     },
-  "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "target": "ES2022",
     "useDefineForClassFields": true,
