@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from app.core.config import settings
-from app.api.routes import user as user_routes
+from app.api.routes import user_account_routes as user_routes
 
 
 app = FastAPI(

@@ -9,4 +9,5 @@ class UsersAccounts(SQLModel, table= True):
     email: EmailStr = Field(default=None, max_length=255, unique=True)
     hashed_password: str
     is_active: bool = Field(default=False)
-    user: Optional["Users"] = Relationship(back_populates="account")
+    is_admin: bool = Field(default=False)
+    user: Optional["Users"] = Relationship(back_populates="usersaccount")

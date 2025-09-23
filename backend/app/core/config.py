@@ -17,6 +17,8 @@ class Settings(BaseSettings):
     PROJECT_VERSION: str = "0.0.1"
     PREFIX_API: str= "/api"
 
+    PASSWD_ALGORITHM: str = "HS256"
+
     DB_GESTOR:str 
     DB_USER:str 
     DB_PASSWORD:str 
