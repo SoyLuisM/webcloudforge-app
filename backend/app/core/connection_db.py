@@ -9,6 +9,9 @@ from app.models.UsersAccounts import UsersAccounts
 from app.models.Users import Users
 from sqlalchemy.exc import OperationalError, DBAPIError
 
+from app.repositories.AccountRepository import AccountRepository
+from app.schemas.account_schemas import CreateAccount
+
 # Crear el engine con SQLModel
 engine = create_engine(str(settings.DATABASE_URL), echo=True)
 
@@ -30,3 +33,30 @@ def get_db() -> Generator[Session, None, None]:
 
 
 SessionDep = Annotated[Session, Depends(get_db)]
+
+
+def create_initial_super_user():
+    """Verifica si existe un admin y lo crea si no existe."""
+    try:
+       
+        with Session(engine) as session:
+            repo = AccountRepository(session)
+
+           
+            admin_data = CreateAccount(
+                email=settings.ADMIN_EMAIL,
+                password=settings.ADMIN_PASSWORD,
+                
+            )
+
+            # Llama al método que verifica y crea el superusuario
+            success = repo.create_super_user(admin_data)
+
+            if success:
+                print("Superusuario creado exitosamente.")
+            else:
+                print("Superusuario ya existe, no se realizaron cambios.")
+                
+    except Exception as e:
+        # Captura cualquier error de conexión o base de datos que pudiera ocurrir
+        print(f" Error al intentar inicializar el Superusuario: {e}")

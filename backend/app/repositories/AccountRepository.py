@@ -12,7 +12,7 @@ class AccountRepository():
     def __init__(self, session: Session):
         self.session= session
         
-    def get_account_by_email(self,email:EmailStr)->PublicAccount:
+    def get_account_by_email(self,email:EmailStr)->UsersAccounts:
         query = select(UsersAccounts).where(UsersAccounts.email == email)
         account = self.session.exec(query).first()
         return account

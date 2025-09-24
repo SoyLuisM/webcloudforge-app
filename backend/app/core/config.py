@@ -18,6 +18,10 @@ class Settings(BaseSettings):
     PREFIX_API: str= "/api"
 
     PASSWD_ALGORITHM: str = "HS256"
+    ADMIN_EMAIL: str 
+    ADMIN_PASSWORD: str
+    SECRET_KEY: str
+    ACCESS_TOKEN_EXPIRE_MINUTES:int = 15
 
     DB_GESTOR:str 
     DB_USER:str 
