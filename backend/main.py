@@ -1,7 +1,7 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from app.core.config import settings
-from app.api.routes import login, user_account_routes as user_routes
+from app.api.routes import login, services, user_account_routes as user_routes
 from app.core.connection_db import create_initial_super_user
 
 
@@ -26,3 +26,4 @@ async def root():
 
 app.include_router(user_routes.router)
 app.include_router(login.router)
+app.include_router(services.router)

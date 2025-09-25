@@ -2,3 +2,8 @@ alembic/versions/*
 
 !alembic/versions/.gitkeep
 __pycache__
+
+.env
+*.log
+.vscode/
+.git
