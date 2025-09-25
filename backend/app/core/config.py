@@ -21,7 +21,9 @@ class Settings(BaseSettings):
     ADMIN_EMAIL: str 
     ADMIN_PASSWORD: str
     SECRET_KEY: str
-    ACCESS_TOKEN_EXPIRE_MINUTES:int = 15
+    #la conversion es a minutos por lo que multiplico el valor de una hora en minutos, por el numero de horas 
+    # y finalmente por el numero de dias, esto se debe configurar a gusto o necesidades (lo estandar son 5 min) 
+    ACCESS_TOKEN_EXPIRE_MINUTES:int = 60*24*1
 
     DB_GESTOR:str 
     DB_USER:str 

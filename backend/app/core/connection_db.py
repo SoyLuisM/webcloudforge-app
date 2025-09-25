@@ -5,12 +5,15 @@ from collections.abc import Generator
 from typing import Annotated
 from sqlmodel import create_engine, Session
 from app.core.config import settings
-from app.models.UsersAccounts import UsersAccounts
-from app.models.Users import Users
 from sqlalchemy.exc import OperationalError, DBAPIError
 
 from app.repositories.AccountRepository import AccountRepository
 from app.schemas.account_schemas import CreateAccount
+
+from app.models.UsersAccounts import UsersAccounts
+from app.models.Users import Users
+# from app.models.Services import UsersCatTecnoLink
+
 
 # Crear el engine con SQLModel
 engine = create_engine(str(settings.DATABASE_URL), echo=True)

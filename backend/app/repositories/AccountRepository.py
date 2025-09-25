@@ -1,3 +1,4 @@
+import uuid
 from sqlmodel import Session, select
 from pydantic import EmailStr
 from app.api.utilities.manager_password import get_password_hash
@@ -12,6 +13,12 @@ class AccountRepository():
     def __init__(self, session: Session):
         self.session= session
         
+    def get_account_by_id(self,id:uuid.UUID):
+        query = select(UsersAccounts).where(UsersAccounts.id == id)
+        account = self.session.exec(query).first()
+        return account
+
+
     def get_account_by_email(self,email:EmailStr)->UsersAccounts:
         query = select(UsersAccounts).where(UsersAccounts.email == email)
         account = self.session.exec(query).first()
