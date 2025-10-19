@@ -1,3 +1,4 @@
+import { LoginPage } from "@/modules/auth/LoginPage";
 import { ErrorPage } from "@/modules/errors/ErrorPage";
 import { PorfolioLayout } from "@/modules/porfolio/layouts/PorfolioLayout";
 import { LandingPage } from "@/modules/porfolio/pages/LandingPage";
@@ -19,4 +20,8 @@ export const appRouter = createBrowserRouter([
         },
     ]
   },
+  {
+    path: "login",
+    element: <LoginPage/>
+  }
 ])

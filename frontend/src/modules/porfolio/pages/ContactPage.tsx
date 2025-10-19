@@ -23,23 +23,23 @@ export const ContactPage = () => {
     <section id="contact" className="py-20 px-6">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">Trabajemos juntos</h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">Trabajemos juntos</h2>
+          <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-2">
             ¿Tienes una idea o una oportunidad laboral? Me encantaría conocerla.
           </p>
         </div>
 
-        <Card className="p-8 md:p-12 bg-gradient-card border-border text-center">
-          <div className="space-y-8">
+        <Card className="p-6 sm:p-8 md:p-12 bg-gradient-card border-border text-center">
+          <div className="space-y-6 sm:space-y-8">
             {/* Email */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-center gap-3">
-                <Mail className="w-6 h-6 text-primary" />
-                <span className="text-lg font-medium">Enviame un Email</span>
+            <div className="space-y-3 sm:space-y-4">
+              <div className="flex items-center justify-center gap-2 sm:gap-3">
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
+                <span className="text-base sm:text-lg font-medium">Enviame un Email</span>
               </div>
               <a 
                 href="mailto:luismartinezh@webcloudforge.com"
-                className="text-2xl md:text-3xl font-semibold text-primary hover:text-primary/80 transition-colors"
+                className="text-xl sm:text-2xl md:text-3xl font-semibold text-primary hover:text-primary/80 transition-colors break-all"
               >
                 luismartinezh@webcloudforge.com
               </a>
@@ -56,22 +56,22 @@ export const ContactPage = () => {
             </div>
 
             {/* Social Links */}
-            <div className="flex items-center justify-center gap-6">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 lg:gap-6">
               {socialLinks.map((social) => (
                 <Button
                   key={social.name}
                   variant="outline"
-                  size="lg"
+                  size="sm"
                   asChild
-                  className="group"
+                  className="group w-full sm:w-auto"
                 >
                   <a 
                     href={social.url} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3"
+                    className="flex items-center justify-center gap-2 sm:gap-3"
                   >
-                    <social.icon className={`w-5 h-5 transition-colors ${social.color}`} />
+                    <social.icon className={`w-4 h-4 sm:w-5 sm:h-5 transition-colors ${social.color}`} />
                     {social.name}
                   </a>
                 </Button>
@@ -79,7 +79,7 @@ export const ContactPage = () => {
             </div>
 
             {/* CTA */}
-            <div className="pt-4">
+            <div className="pt-2 sm:pt-4">
               <Button className="bg-accent hover:bg-accent/90 text-accent-foreground" size="lg" asChild>
                 <a href="mailto:luismartinezh@webcloudforge.com">
                   Iniciar conversacion
