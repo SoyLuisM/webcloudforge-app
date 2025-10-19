@@ -17,7 +17,7 @@ services:
     
   db:
     container_name: ${POSTGRES_CONTAINER_NAME}
-    image: postgres:16-alpine
+    image: postgres:16-alpine3.22
     restart: unless-stopped
     ports:
       - 127.0.0.1:${POSTGRES_PORT_EXPOSE}:${POSTGRES_PORT_INTERN}

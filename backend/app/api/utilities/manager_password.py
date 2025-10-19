@@ -1,13 +1,11 @@
 from datetime import datetime, timedelta, timezone
-from typing import Any
 # from fastapi.security import OAuth2PasswordBearer
 from fastapi import HTTPException,status
 import jwt
 from passlib.context import CryptContext
 from pydantic import ValidationError
-from sqlmodel import Session
 from app.core.config import settings
-from app.schemas.aurh_schemas import token
+
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 # 
@@ -18,12 +16,29 @@ def get_password_hash(password:str)->str:
 def verify_password(password: str, hashed_passwd:str)->bool:
     return pwd_context.verify(password,hashed_passwd)
 
-def create_access_token(subject: str | Any) -> str:
-    expires_delta= timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+def _create_token(subject: str, expires_delta: timedelta) -> str:
+    """Función base privada para crear cualquier token JWT."""
     expire = datetime.now(timezone.utc) + expires_delta
     to_encode = {"exp": expire, "sub": str(subject)}
-    encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.PASSWD_ALGORITHM)
+        
+    encoded_jwt = jwt.encode(
+        to_encode, settings.SECRET_KEY, algorithm=settings.PASSWD_ALGORITHM
+    )
     return encoded_jwt
+
+def create_access_token(subject: str) -> str:
+    """
+    Crea un token de acceso de corta duración.
+    """
+    expires_delta = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    return _create_token(subject=subject, expires_delta=expires_delta)
+
+def create_refresh_token(subject: str) -> str:
+    """
+    Crea un token de refresco de larga duración.
+    """
+    expires_delta = timedelta(days=settings.REFRESH_TOKEN_EXPIRE_DAYS)
+    return _create_token(subject=subject, expires_delta=expires_delta)
 
 
 

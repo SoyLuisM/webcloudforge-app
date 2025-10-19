@@ -13,6 +13,7 @@ class Settings(BaseSettings):
         env_ignore_empty=True,
         extra="ignore",
     )
+    IS_DEBUG: bool
     PROJECT_NAME: str = "webcloudforge.com-backend"
     PROJECT_VERSION: str = "0.0.1"
     PREFIX_API: str= "/api"
@@ -23,7 +24,8 @@ class Settings(BaseSettings):
     SECRET_KEY: str
     #la conversion es a minutos por lo que multiplico el valor de una hora en minutos, por el numero de horas 
     # y finalmente por el numero de dias, esto se debe configurar a gusto o necesidades (lo estandar son 5 min) 
-    ACCESS_TOKEN_EXPIRE_MINUTES:int = 60*24*1
+    ACCESS_TOKEN_EXPIRE_MINUTES:int = 5
+    REFRESH_TOKEN_EXPIRE_DAYS: int = 7
 
     DB_GESTOR:str 
     DB_USER:str 

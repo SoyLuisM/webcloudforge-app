@@ -10,7 +10,7 @@ COPY . .
 RUN npm run build
 
 
-FROM nginx:1.29.1-alpine AS prod
+FROM nginx:1.29.1-alpine3.22 AS prod
 EXPOSE ${FRONTEND_PORT_INTERN}
 COPY --from=builder /app/dist /usr/share/nginx/html
 RUN rm /etc/nginx/conf.d/default.conf
